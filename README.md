@@ -1,2 +1,2 @@
 # DemoSpringData
-Demo Spring data
+Demo Spring data with spring boot
