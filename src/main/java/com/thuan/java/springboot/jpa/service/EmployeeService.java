@@ -3,6 +3,8 @@ package com.thuan.java.springboot.jpa.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.thuan.java.springboot.jpa.entity.Employee;
@@ -20,12 +22,20 @@ public class EmployeeService {
 		return employeeRepository.save(employee);
 	}
 
-	public void delete(Employee employee) {
-		employeeRepository.delete(employee);
+	public boolean deleteById(long id) {
+		if (employeeRepository.existsById(id)) {
+			employeeRepository.deleteById(id);
+			return true;
+		}
+		return false;
 	}
 
-	public void deleteById(long id) {
-		employeeRepository.deleteById(id);
+	public List<Employee> findAll() {
+		return employeeRepository.findAll();
+	}
+
+	public Page<Employee> findByPage(Pageable pageable) {
+		return employeeRepository.findAll(pageable);
 	}
 
 	public List<Employee> findByAge(int age) {
@@ -51,7 +61,7 @@ public class EmployeeService {
 
 		return list;
 	}
-	
+
 	public List<EmployeeDepartment> getEmpFullDeptMent() {
 		return employeeRepository.getEmpFullDepartment();
 	}

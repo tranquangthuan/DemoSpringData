@@ -2,15 +2,15 @@ package com.thuan.java.springboot.jpa.repository;
 
 import java.util.List;
 
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.PagingAndSortingRepository;
 
 import com.thuan.java.springboot.jpa.entity.Employee;
 import com.thuan.java.springboot.jpa.model.EmployeeDepartment;
 import com.thuan.java.springboot.jpa.model.EmployeeFullName;
 
 //@Repository
-public interface EmployeeRepository extends PagingAndSortingRepository<Employee, Long> {
+public interface EmployeeRepository extends JpaRepository<Employee, Long> {
 
 	List<Employee> findByAge(int age);
 
